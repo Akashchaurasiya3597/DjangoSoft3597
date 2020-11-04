@@ -1,0 +1,55 @@
+{% extends 'Institute/base.html' %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Django Soft</title>
+    <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+{% block content %}
+    <style>
+    .container{
+        border: 2px rebeccapurple solid;
+        padding: 10px;
+
+
+    }
+
+    </style>
+
+<div class="container bg-info">
+    <div class="row">
+        <div class="offset-md-2 col-md-8">
+            {% if Ffeedback %}
+                <h1 class="text-white">Feedback are..</h1>
+                {% for i in Ffeedback %}
+                    <label style="color: white">Name: </label>{{ i.name|capfirst }}<br>
+                    <label style="color: white">Ratting: </label>{{ i.ratting }}<br>
+                    <label style="color: white">Date: </label>{{ i.Date }}<br>
+                    <label style="color: white">Feedback: </label>{{ i.Feedback }}<br><br>
+                {% endfor %}
+             {% else %}
+                <h2 class="text-white">Feedback data is Not available</h2>
+            {% endif %}
+            <form method="POST">
+            {% csrf_token %}
+            {{ Fform }}
+                <center>
+            <input type="submit" value="Submit" class="btn btn-success">
+            <input type="reset" value="Clear" class="btn btn-danger">
+            </center>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+</body>
+</html>

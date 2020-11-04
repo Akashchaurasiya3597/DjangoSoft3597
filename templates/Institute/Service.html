@@ -1,0 +1,50 @@
+{% extends 'Institute/base.html' %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Django Soft</title>
+    {% include 'Institute/Bootstrapline.html' %}
+</head>
+<body>
+{% block content %}
+<div class="container">
+<div class="row">
+    <div class="col-md">
+        <table class="table table-hover text-center table-bordered">
+            <thead class="bg-info">
+            <tr>
+                <th>Course Name</th>
+                <th>Duration</th>
+                <th>Start Date</th>
+                <th>Start Time</th>
+                <th>trainer Name</th>
+                <th>Trainer Exp</th>
+                <th>Contents</th>
+            </tr>
+            </thead>
+            <tbody>
+
+                {% for i in show %}
+                    <tr>
+                    <td>{{ i.course_name }}</td>
+                    <td>{{ i.duration }}</td>
+                    <td>{{ i.start_date }}</td>
+                    <td>{{ i.start_time }}</td>
+                    <td>{{ i.trainer_name }}</td>
+                    <td>{{ i.trainer_exp }}</td>
+                    <td><a href="{{ i.content.url }}"class="btn btn-success">Download</a></td>
+                    </tr>
+                {% endfor %}
+
+            </tbody>
+        </table>
+    </div>
+</div>
+</div>
+
+{% endblock %}
+
+</body>
+</html>

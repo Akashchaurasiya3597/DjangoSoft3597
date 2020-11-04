@@ -1,0 +1,47 @@
+{% extends 'Institute/base.html' %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Django Soft</title>
+   {% include 'Institute/Bootstrapline.html' %}
+</head>
+<body>
+{% block content %}
+<style>
+.container{
+
+        border: 2px rebeccapurple solid;
+        padding: 10px;
+        background-color: gainsboro;
+
+    }
+
+
+</style>
+
+
+<form method="POST">
+<div class="container bg-info">
+    <div class="row">
+        <div class="offset-md-2 col-md-8">
+            <h2 class="text-center">Enquiry form</h2>
+
+           {% csrf_token %}
+            {{ Cform }}
+
+        </div>
+    </div>
+    <br>
+    <center>
+    <input type="submit" value="Submit" class="btn btn-success">
+    <input type="reset" value="Clear" class="btn btn-danger">
+    </center>
+</div>
+
+</form>
+{% endblock %}
+
+</body>
+</html>
